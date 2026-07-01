@@ -155,11 +155,11 @@ def extract_with_ai(file_bytes: bytes):
             model="gemini-2.0",
 
             contents=[
-                EXTRACTION_PROMPT,
                 types.Part.from_bytes(
                     data=file_bytes,
                     mime_type="application/pdf",
                 ),
+                EXTRACTION_PROMPT,
             ],
 
             config=types.GenerateContentConfig(
@@ -196,14 +196,7 @@ def extract_with_ai(file_bytes: bytes):
         )
 
     except Exception as e:
-      log.exception("Gemini extraction failed")
 
-      print("=" * 80)
-      print(type(e))
-      print(repr(e))
-      print(traceback.format_exc())
+        log.exception("Gemini extraction failed")
 
-      if hasattr(e, "response"):
-          print("Response:", e.response)
-
-      return None, repr(e)
+        return None, str(e)
