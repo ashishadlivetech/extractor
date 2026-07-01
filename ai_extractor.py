@@ -160,7 +160,7 @@ def extract_with_ai(file_bytes: bytes):
                     data=file_bytes,
                     mime_type="application/pdf",
                 ),
-            ]
+            ],
 
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
