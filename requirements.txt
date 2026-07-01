@@ -1,0 +1,12 @@
+fastapi
+python-dotenv
+uvicorn
+gunicorn
+pytesseract
+pdf2image
+Pillow
+pdfplumber
+pdfminer.six
+python-multipart
+cryptography
+google-genai

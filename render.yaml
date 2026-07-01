@@ -1,0 +1,15 @@
+# This file tells Render to use Docker instead of its Python buildpack.
+# Without this, Render ignores your Dockerfile and none of the
+# apt-get installed packages (tesseract, poppler, ghostscript) are available.
+services:
+  - type: web
+    name: form16-extractor
+    runtime: docker         # <-- CRITICAL: forces Render to use your Dockerfile
+    dockerfilePath: ./Dockerfile
+    plan: standard          # free tier doesn't support long-running OCR (30s timeout)
+    healthCheckPath: /
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"          # ensures logs appear in real time in Render's log console
+      - key: GEMINI_API_KEY
+        sync: false         # set this manually in the Render dashboard; without it AI mode silently disables
