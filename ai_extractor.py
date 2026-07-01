@@ -152,7 +152,7 @@ def extract_with_ai(file_bytes: bytes):
 
         response = client.models.generate_content(
 
-            model="gemini-2.0",
+            model="gemini-2.0-flash",
 
             contents=[
                 types.Part.from_bytes(
