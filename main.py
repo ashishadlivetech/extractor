@@ -133,6 +133,7 @@ def is_text_based_pdf(file_bytes: bytes) -> bool:
     try:
 
         with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
+            log.info("PDF Pages: %d", len(pdf.pages))
 
             for page in pdf.pages:
 
